@@ -1,0 +1,24 @@
+<!doctype html>
+
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <link rel="stylesheet" type="text/css" 
+            href="{{ url_for('static', filename='css/foundation.min.css') }}"></link>
+            <script type="text/javascript" 
+                src=" {{ url_for('static', filename='js/foundation.min.js')
+                }}">
+            </script>
+        <title>Where RU Working??</title> 
+        {% block header %} {% endblock header %}
+    </head>
+    <body>
+        <div class="container">
+            {% block content %} {% endblock content %}
+        </div>
+        <div id="footer">
+            {% block footer %} {% endblock footer %}
+        </div>
+    </body>
+
+</html>

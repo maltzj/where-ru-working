@@ -1,0 +1,41 @@
+{% extends 'master.html' %}
+
+{% block content %}
+<form method="POST">
+    <div class="row">
+        <div class="large-4 columns">
+            <input type="text" name="name" placeholder="Name" />
+        </div>
+
+        <div class="large-4 columns">
+            <input type="text" name="email" placeholder="Email Address" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="large-4 columns">
+            <input type="text" name="company_name" placeholder="Company" />
+        </div>
+        <div class="large-4 columns">
+            <input type="text" name="pay" placeholder="Pay (per month)"/>
+        </div>
+    </div>
+    <div class="row">
+        <div class="large-4 columns">
+            <input type="text" name="start_date" />
+        </div>
+        <div class="large-4 columns">
+            <input type="text" name="end_date" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="large-4 columns">
+            <input type="text" name="location" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="large-10 columns">
+            <textarea rows="10" name="review"></textarea>
+        </div>
+    </div>
+    </form>
+{% endblock content %}
