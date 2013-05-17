@@ -8,9 +8,13 @@ app = Flask(__name__)
 def hello():
     return render_template('index.html') 
 
-@app.route('/create')
-def create():
+@app.route('/create', methods=['GET'])
+def create_get():
     return render_template('create_job.html')
+
+@app.route('/create', methods=['POST'])
+def create_post():
+    return 'Posted to create'
 
 if __name__ == "__main__":
     app.run(debug = True)
