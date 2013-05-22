@@ -12,35 +12,35 @@ jobs = Table('jobs', metadata,
             Column('id', Integer, primary_key = True),
             Column('name', String(40), nullable = False),
             Column('email', String(50), nullable = False),
-            Column('company_name', String(50), nullable = False),
+            Column('company', String(50), nullable = False),
             Column('start_date', DateTime, nullable = False),
             Column('end_date', DateTime),
             Column('location', String(50)),
-            Column('pay', Float),
+            Column('monthly_pay', Float),
             Column('review', Text)
         )
 
-medatadata.create_all(engine)
+metadata.create_all(engine)
 
-class Job(Object):
+class Job(object):
 
     def __init__(self, fields = None):
         self.id = None
         if fields == None:
             pass
-        elif fields.id:
+        elif hasattr(fields, 'id'):
             #init a the fields based on a database query
             pass
         else:
             #otherwise, initialize fields from the array
-            self.name = name
-            self.email = email
-            self.company_name = company_name
-            self.start_date = start_date
-            self.end_date = end_date
-            self.location = location
-            self.pay = pay
-            self.review = review
+            self.name = fields['name']
+            self.email = fields['email']
+            self.company_name = fields['company']
+            self.start_date = fields['start_date']
+            self.end_date = fields['end_date']
+            self.location = fields['location']
+            self.pay = fields['monthly_pay']
+            self.review = fields['review']
             self.id = None
 
     
@@ -50,7 +50,7 @@ class Job(Object):
         dict = self.__dict__
        
         if self.id == None:
-            del(dict.id)
+            del(dict['id'])
         
         conn.execute(insert, dict)
    
