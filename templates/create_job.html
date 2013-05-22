@@ -1,3 +1,4 @@
+{% from "_formhelpers.html" import render_field %}
 {% extends 'master.html' %}
 
 {% block content %}
@@ -5,37 +6,37 @@
     {{ form.csrf_token }}
     <div class="row">
         <div class="large-4 columns">
-            <input type="text" name="name" placeholder="Name" />
+            {{ render_field(form.name, placeholder="Your Name") }}
         </div>
 
         <div class="large-4 columns">
-            <input type="text" name="email" placeholder="Email Address" />
+            {{ render_field(form.email, placeholder="Email Address") }}
         </div>
     </div>
     <div class="row">
         <div class="large-4 columns">
-            <input type="text" name="company" placeholder="Company" />
+            {{ render_field(form.company, placeholder="Company Name") }}
         </div>
         <div class="large-4 columns">
-            <input type="text" name="pay" placeholder="Pay (per month)"/>
-        </div>
-    </div>
-    <div class="row">
-        <div class="large-4 columns">
-            {{ form.start_date }}
-        </div>
-        <div class="large-4 columns">
-            <input type="text" name="end_date" placeholder="End Date"/>
+            {{ render_field(form.monthly_pay, placeholder="Monthly pay") }}
         </div>
     </div>
     <div class="row">
         <div class="large-4 columns">
-            <input type="text" name="location" placeholder="Location"/>
+            {{ render_field(form.start_date, placeholder="Start Date") }}
+        </div>
+        <div class="large-4 columns">
+            {{ render_field(form.end_date, placeholder="End Date") }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="large-4 columns">
+            {{ render_field(form.location, placeholder="Location") }}
         </div>
     </div>
     <div class="row">
         <div class="large-10 columns">
-            <textarea rows="10" name="review" placeholder="Review your job"></textarea>
+            {{ render_field(form.review, placeholder="Company Review") }}
         </div>
     </div>
     <div class="row">

@@ -1,11 +1,11 @@
-{% macro render_field(field, size) %}
+{% macro render_field(field) %}
     <label>
-        {% field.label %}
+        {{ field.label }}
     </label>
     {% if(field.errors) %}
-        <span class="alert-box alert columns large-{% size %}">
-            {% field.errors[0] %}
+        <span class="alert-box alert columns"> 
+            {{ field.errors[0] }}
         </span>
     {% endif %}
-    {% field(**kwargs)|safe %}
+    {{ field(**kwargs)|safe }}
 {% endmacro %}

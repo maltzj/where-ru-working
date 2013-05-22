@@ -25,7 +25,7 @@ def create_post():
         return "It Validated" 
     else:
         errors = '%r' % form.errors
-        return errors 
+        return render_template('create_job.html', form=form) 
     
     #save that data
     pass

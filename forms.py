@@ -10,8 +10,9 @@ class JobForm(Form):
         validators.email()])
     company = TextField(u'Company Name', [validators.Required()])
     monthly_pay = TextField(u'Pay rate (per month)')
-    start_date = DateField(u'Start Date', [validators.DataRequired()],
+    start_date = DateField(u'Start Date', [validators.Required()],
             '%m-%d-%Y')
     end_date = DateField(u'End Date', [validators.Optional()])
+    location = TextField(u'Job Location', [validators.Required()])
     review = TextAreaField(u'Review of the company', [validators.Required()])
 
