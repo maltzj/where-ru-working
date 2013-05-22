@@ -1,0 +1,11 @@
+{% macro render_field(field, size) %}
+    <label>
+        {% field.label %}
+    </label>
+    {% if(field.errors) %}
+        <span class="alert-box alert columns large-{% size %}">
+            {% field.errors[0] %}
+        </span>
+    {% endif %}
+    {% field(**kwargs)|safe %}
+{% endmacro %}

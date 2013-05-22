@@ -2,6 +2,7 @@
 
 {% block content %}
 <form method="POST">
+    {{ form.csrf_token }}
     <div class="row">
         <div class="large-4 columns">
             <input type="text" name="name" placeholder="Name" />
@@ -13,7 +14,7 @@
     </div>
     <div class="row">
         <div class="large-4 columns">
-            <input type="text" name="company_name" placeholder="Company" />
+            <input type="text" name="company" placeholder="Company" />
         </div>
         <div class="large-4 columns">
             <input type="text" name="pay" placeholder="Pay (per month)"/>
@@ -21,7 +22,7 @@
     </div>
     <div class="row">
         <div class="large-4 columns">
-            <input type="text" name="start_date" placeholder="Start Date" />
+            {{ form.start_date }}
         </div>
         <div class="large-4 columns">
             <input type="text" name="end_date" placeholder="End Date"/>
@@ -29,7 +30,7 @@
     </div>
     <div class="row">
         <div class="large-4 columns">
-            <input type="text" name="location" placeholder="location"/>
+            <input type="text" name="location" placeholder="Location"/>
         </div>
     </div>
     <div class="row">
