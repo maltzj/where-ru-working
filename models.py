@@ -20,9 +20,9 @@ jobs = Table('jobs', metadata,
             Column('review', Text)
         )
 
-medatadata.create_all(engine)
+metadata.create_all(engine)
 
-class Job(Object):
+class Job(object):
 
     def __init__(self, fields = None):
         self.id = None
