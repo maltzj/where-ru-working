@@ -24,7 +24,7 @@ def create_post():
     if(form.validate()):
         job = Job(form.data);
         job.save()
-        return '%r' % job    
+        return 'Booya'
     else:
         return render_template('create_job.html', form=form) 
     

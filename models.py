@@ -5,7 +5,6 @@ from sqlalchemy import Table, Column
 from sqlalchemy import String, Integer, Text, DateTime, Float 
 
 engine = create_engine('sqlite:////tmp/test.db', echo = False)
-conn = engine.connect()
 metadata = MetaData(bind = engine)
 
 jobs = Table('jobs', metadata,
@@ -35,7 +34,7 @@ class Job(object):
             #otherwise, initialize fields from the array
             self.name = fields['name']
             self.email = fields['email']
-            self.company_name = fields['company']
+            self.company = fields['company']
             self.start_date = fields['start_date']
             self.end_date = fields['end_date']
             self.location = fields['location']
@@ -45,6 +44,7 @@ class Job(object):
 
     
     def save(self):
+        conn = engine.connect()
         #save the field to the jobs table
         insert = jobs.insert()
         dict = self.__dict__
@@ -53,6 +53,7 @@ class Job(object):
             del(dict['id'])
         
         conn.execute(insert, dict)
+        conn.close()
    
     @classmethod
     def find(id):
