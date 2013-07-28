@@ -9,15 +9,15 @@ engine = create_engine('sqlite:////tmp/test.db', echo = False)
 metadata = MetaData(bind = engine)
 
 jobs = Table('jobs', metadata,
-            Column('id', Integer, primary_key = True),
-            Column('name', String(40), nullable = False),
-            Column('email', String(50), nullable = False),
-            Column('company', String(50), nullable = False),
-            Column('start_date', DateTime, nullable = False),
-            Column('end_date', DateTime),
-            Column('location', String(50)),
-            Column('monthly_pay', Float),
-            Column('review', Text)
+        Column('id', Integer, primary_key = True),
+        Column('name', String(40), nullable = False),
+        Column('email', String(50), nullable = False),
+        Column('company', String(50), nullable = False),
+        Column('start_date', DateTime, nullable = False),
+        Column('end_date', DateTime),
+        Column('location', String(50)),
+        Column('monthly_pay', Float),
+        Column('review', Text)
         )
 
 metadata.create_all(engine)
@@ -42,20 +42,20 @@ class Job(object):
             self.pay = fields['monthly_pay']
             self.review = fields['review']
             self.id = None
-    
+
     def save(self):
         conn = engine.connect()
         #save the field to the jobs table
         insert = jobs.insert()
         dict = self.__dict__
-      
+
         # If we haven't set id, this is an insert, not update
         if self.id == None:
             del(dict['id'])
-        
+
         conn.execute(insert, dict)
         conn.close()
-   
+
     @classmethod
     def find(id):
         #find by a given id
@@ -71,9 +71,22 @@ class Job(object):
         conn = engine.connect()
         select_jobs = select([jobs])
         results = conn.execute(select_jobs)
-        return results.fetchall()
+        return Job._format_jobs_list(results)
 
-        
+    @classmethod
+    def _format_jobs_list(self, result_set):
+        formatted_list = []
+        for result in result_set:
+            formatted_list.append({
+                'name': result[jobs.c.name],
+                'start_date': result[jobs.c.start_date],
+                'end_date': result[jobs.c.end_date],
+                'review': result[jobs.c.review]
+                })
+
+            return formatted_list
+
+
 
 
 
