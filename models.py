@@ -3,6 +3,7 @@
 from sqlalchemy import create_engine, MetaData
 from sqlalchemy import Table, Column
 from sqlalchemy import String, Integer, Text, DateTime, Float 
+from sqlalchemy import select
 
 engine = create_engine('sqlite:////tmp/test.db', echo = False)
 metadata = MetaData(bind = engine)
@@ -41,14 +42,14 @@ class Job(object):
             self.pay = fields['monthly_pay']
             self.review = fields['review']
             self.id = None
-
     
     def save(self):
         conn = engine.connect()
         #save the field to the jobs table
         insert = jobs.insert()
         dict = self.__dict__
-       
+      
+        # If we haven't set id, this is an insert, not update
         if self.id == None:
             del(dict['id'])
         
@@ -64,6 +65,15 @@ class Job(object):
     def find_where(fields):
         #find a job where a given set of fields are the case
         pass
+
+    @classmethod
+    def list(self):
+        conn = engine.connect()
+        select_jobs = select([jobs])
+        results = conn.execute(select_jobs)
+        return results.fetchall()
+
+        
 
 
 

@@ -31,5 +31,10 @@ def create_post():
     #save that data
     pass
 
+@app.route('/list')
+def list_jobs():
+   results = Job.list() 
+   return '%r' % results
+
 if __name__ == "__main__":
     app.run(debug = True)
