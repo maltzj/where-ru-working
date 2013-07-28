@@ -14,7 +14,10 @@
             </script>
         <script type="text/javascript" 
             src="{{ url_for('static', filename='js/foundation.min.js') }}">
-        </script>
+		</script>
+		<script type="text/javascript"
+			src="{{ url_for('static', filename='js/modernizr.custom.js') }}">
+		</script>
         <title>Where RU Working??</title> 
         {% block header %} {% endblock header %}
     </head>
@@ -23,8 +26,17 @@
             {% block content %} {% endblock content %}
         </div>
         <div id="footer">
-            {% block footer %} {% endblock footer %}
-        </div>
-    </body>
+			{% block footer %} 
+				<script>
+				  document.write('<script src=/js/vendor/'
+						  + ('__proto__' in {} ? 'zepto' : 'jquery')
+							  + '.js><\/script>');
+			  	</script>
+				<script type="text/javascript">
+					$(documet).foundation();
+				</script>
+			{% endblock footer %}
+		</div>
+		</body>
 
 </html>

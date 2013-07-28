@@ -1,0 +1,11 @@
+{% extends 'master.html' %}
+
+{% block content %}
+	<div class="push-2 columns">
+		<ul class="disc">
+			{% for job in jobs %}
+				<li> {{ job.company }}</li>
+			{% endfor %}
+		</ul>
+	</div>
+{% endblock content %}
