@@ -81,10 +81,11 @@ class Job(object):
                 'name': result[jobs.c.name],
                 'start_date': result[jobs.c.start_date],
                 'end_date': result[jobs.c.end_date],
-                'review': result[jobs.c.review]
+                'review': result[jobs.c.review],
+				'company': result[jobs.c.company],
                 })
 
-            return formatted_list
+        return formatted_list
 
 
 

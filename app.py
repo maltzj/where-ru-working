@@ -34,7 +34,7 @@ def create_post():
 @app.route('/list')
 def list_jobs():
    results = Job.list() 
-   return '%r' % results
+   return render_template('list_jobs.html', jobs=results) 
 
 if __name__ == "__main__":
     app.run(debug = True)
