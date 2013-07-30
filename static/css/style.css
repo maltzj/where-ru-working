@@ -7,6 +7,10 @@ ol, li {
 	list-style: none outside none;
 }
 
+li.wrap-content {
+	display: inline-block;
+}
+
 #map-div img {
     max-width: none;
 }

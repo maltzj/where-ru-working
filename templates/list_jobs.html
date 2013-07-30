@@ -4,7 +4,7 @@
 	<div class="push-2 columns">
 		<ul class="disc">
 			{% for job in jobs %}
-				<li> {{ job.company }}</li>
+				<li data-tooltip="right" data-width="120" class="has-tip tip-right wrap-content" title="Hello world">{{ job.company }}</li>
 			{% endfor %}
 		</ul>
 	</div>
